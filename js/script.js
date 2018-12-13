@@ -4,56 +4,59 @@
 
 //GLOBAL VARIABLES
 /* global $ */
-var userChoice = "";
-var computerChoice = "";
-var winner = "";
-var randomNumber = 0;
 
 
+//DOCUMENT READY FUNCTION BELOW
 
+var userChoice ;
 
-// DOCUMENT READY FUNCTION BELOW
 $("#shoot").click(function(){
     userChoice = $("#input").val();
-    $("#userChoice").text(userChoice);
+     $("#userChoice").text(userChoice);
+     
 });
 
+var computerChoice;
+
 $("#shoot").click(function(){
-    randomNumber = ("rock","paper", "scissors");
-    computerChoice = Math.random();
     
-    console.log(computerChoice);
-    
-    if (computerChoice <= .33) {
-        $("#computerChoice").text("rock");
+     var randomAnswer;
+     randomAnswer= Math.random();
+     if (randomAnswer <.33){
+        $("#computerChoice").text("Rock");
+         computerChoice = "Rock";
      }
-     
-    else if (computerChoice > .33 && computerChoice < .66) {
-    $("#computerChoice").text("paper");
-} 
- else if (computerChoice >= .66 ){
-    $("#computerChoice").text("scissors");
- }
+    else if(randomAnswer<.66){
+        $("#computerChoice").text("Paper");
+         computerChoice = "Paper";
+    }
+    else {
+        $("#computerChoice").text("Scissor");
+        computerChoice ="Scissor";
+    }
+
 console.log(userChoice)
 console.log(computerChoice)
 
 if (
-    ((userChoice==="Rock")&&(computerChoice==="Rock"))||
-    ((userChoice==="Paper")&&(computerChoice==="Paper"))||
-    ((userChoice==="Scissors")&&(computerChoice==="Scissors"))||
+    ((userChoice==="rock")&&(computerChoice==="Rock"))||
+    ((userChoice==="paper")&&(computerChoice==="Paper"))||
+    ((userChoice==="scissor")&&(computerChoice==="Scissor"))
     ){
-        $("#message").text("Tie");
- }
- else if ((userChoice==="Rock")&&(computerChoice==="Paper"))||
-    ((userChoice==="Paper")&&(computerChoice==="Scissor"))||
-    ((userChoice==="Scissors")&&(computerChoice==="Rock"))||
-    ){
-        $("#message").text("Computer Wins");
+    $("#message").text("Tie");
 }
-else if ((userChoice==="Rock")&&(computerChoice==="Scissors"))||
-    ((userChoice==="Paper")&&(computerChoice==="Rock"))||
-    ((userChoice==="Scissors")&&(computerChoice==="Paper"))||
+else if (((userChoice==="rock")&&(computerChoice==="Paper"))||
+    ((userChoice==="paper")&&(computerChoice==="Scissor"))||
+    ((userChoice==="scissor")&&(computerChoice==="Rock"))
     ){
-        $("#message").text("User Wins ");
-    }
+    $("#message").text("Computer Wins");
+}
+else if(((userChoice==="rock")&&(computerChoice==="Scissor"))||
+    ((userChoice==="paper")&&(computerChoice==="Rock"))||
+    ((userChoice==="scissor")&&(computerChoice==="Paper"))
+    ){
+    $("#message").text("User Wins ");
+}
+
+
 });
